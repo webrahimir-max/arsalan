@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>نمونه سایت طلافروشی ارسلان</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&family=Vazirmatn:wght@300;400;500;700;800&display=swap"
+    />
+    <link rel="stylesheet" href="hark.css" />
+    <link rel="stylesheet" href="hark-hero.css" />
+    <style>
+      :root {
+        --x-bg: #0b0a08;
+        --x-bg-2: #15130f;
+        --x-card: #1b1813;
+        --x-line: rgba(212, 175, 95, 0.22);
+        --x-gold: #d8b46a;
+        --x-gold-2: #f3dca0;
+        --x-gold-deep: #a9823c;
+        --x-text: #f5efe3;
+        --x-muted: #b6ab97;
+        --x-font: "Vazirmatn", var(--sans), sans-serif;
+      }
+      body { background: var(--x-bg); color: var(--x-text); }
+      .page.x-store {
+        font-family: var(--x-font);
+        color: var(--x-text);
+        max-width: 1120px;
+        padding-inline: 0;
+        padding-block: 0 96px;
+        display: block;
+      }
+      .x-store * { font-family: inherit; }
+      .x-store a { color: inherit; text-decoration: none; }
+      .x-wrap { padding-inline: 18px; }
+      .x-gold-text { color: var(--x-gold); }
+
+      /* top strip */
+      .x-strip {
+        display: flex; align-items: center; justify-content: center; gap: 8px;
+        padding: 8px 16px; font-size: 12px; color: var(--x-bg);
+        background: var(--x-gold);
+        font-weight: 500;
+      }
+      .x-strip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #1d7a3e; box-shadow: 0 0 0 3px rgba(29,122,62,.25); }
+
+      /* header */
+      .x-header {
+        position: sticky; top: 0; z-index: 20;
+        display: flex; align-items: center; gap: 12px;
+        padding: 12px 18px;
+        background: rgba(11, 10, 8, 0.86);
+        backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--x-line);
+      }
+      .x-logo { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 1px solid var(--x-gold); flex: none; }
+      .x-brand { flex: 1; min-width: 0; }
+      .x-brand b { display: block; font-size: 17px; font-weight: 800; line-height: 1.4; }
+      .x-brand small { display: block; font-size: 12px; color: var(--x-muted); }
+      .x-icon {
+        position: relative; width: 44px; height: 44px; border-radius: 50%;
+        display: grid; place-items: center; flex: none;
+        border: 1px solid var(--x-line); background: var(--x-bg-2); color: var(--x-gold); cursor: pointer;
+      }
+      .x-icon svg { width: 20px; height: 20px; }
+      .x-count {
+        position: absolute; top: -2px; left: -2px; min-width: 20px; height: 20px; padding: 0 5px;
+        border-radius: 10px; background: var(--x-gold); color: var(--x-bg);
+        font-size: 12px; font-weight: 700; display: grid; place-items: center;
+      }
+      .x-count[hidden] { display: none; }
+
+      /* hero */
+      .x-hero {
+        position: relative; margin: 16px 18px 0; border-radius: 28px; overflow: hidden;
+        min-height: 520px; display: flex; align-items: flex-end;
+        border: 1px solid var(--x-line);
+      }
+      .x-hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+      .x-hero::after {
+        content: ""; position: absolute; inset: 0;
+        background: linear-gradient(180deg, rgba(11,10,8,.25) 0%, rgba(11,10,8,.55) 45%, rgba(11,10,8,.95) 100%);
+      }
+      .x-hero__copy { position: relative; z-index: 1; padding: 28px 22px; }
+      .x-eyebrow {
+        display: inline-flex; align-items: center; gap: 6px; margin: 0 0 12px;
+        padding: 5px 12px; border-radius: 999px; font-size: 12px; color: var(--x-gold-2);
+        border: 1px solid var(--x-line); background: rgba(11,10,8,.5);
+      }
+      .x-hero h1 { margin: 0 0 12px; font-size: clamp(30px, 8vw, 52px); font-weight: 800; line-height: 1.35; letter-spacing: 0; }
+      .x-hero p.x-sub { margin: 0 0 22px; font-size: 15px; line-height: 2; color: #e8dfcd; max-width: 34em; }
+      .x-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+      .x-btn {
+        display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+        min-height: 48px; padding: 0 22px; border-radius: 999px; font-size: 15px; font-weight: 700;
+        cursor: pointer; border: 1px solid var(--x-gold); transition: transform .15s var(--ease-out), background .2s;
+      }
+      .x-btn:active { transform: scale(.97); }
+      .x-btn--gold { background: var(--x-gold); color: #1a1408 !important; border-color: var(--x-gold-2); box-shadow: inset 0 1px 0 rgba(255,255,255,.35); }
+      .x-btn--ghost { background: rgba(11,10,8,.4); color: var(--x-gold-2) !important; }
+
+      /* section */
+      .x-sec { padding: 44px 0 0; }
+      .x-sec__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; padding-inline: 18px; margin-bottom: 18px; }
+      .x-sec__head h2 { margin: 0; font-size: 22px; font-weight: 800; line-height: 1.5; letter-spacing: 0; }
+      .x-sec__head p { margin: 4px 0 0; font-size: 13px; color: var(--x-muted); }
+      .x-sec__head a { font-size: 13px; color: var(--x-gold); white-space: nowrap; display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; justify-content: center; }
+      .x-orn { display: block; width: 36px; height: 2px; margin-bottom: 10px; background: linear-gradient(90deg, transparent, var(--x-gold)); }
+
+      /* categories */
+      .x-cats {
+        display: flex; gap: 14px; overflow-x: auto; padding: 4px 18px 8px;
+        scroll-snap-type: x mandatory; scrollbar-width: none;
+      }
+      .x-cats::-webkit-scrollbar { display: none; }
+      .x-cat { flex: none; width: 78px; text-align: center; scroll-snap-align: start; }
+      .x-cat__ring {
+        width: 74px; height: 74px; margin: 0 auto 8px; border-radius: 50%; padding: 2px;
+        background: conic-gradient(from 200deg, var(--x-gold-deep), var(--x-gold-2), var(--x-gold), var(--x-gold-deep));
+      }
+      .x-cat__ring img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid var(--x-bg); display: block; }
+      .x-cat span { font-size: 12px; line-height: 1.6; color: var(--x-text); display: block; }
+
+      /* products */
+      .x-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding-inline: 18px; }
+      .x-prod {
+        display: flex; flex-direction: column; border-radius: 20px; overflow: hidden;
+        background: var(--x-card); border: 1px solid var(--x-line);
+      }
+      .x-prod__media { position: relative; aspect-ratio: 4 / 5; background: #000; }
+      .x-prod__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .x-badge {
+        position: absolute; top: 10px; right: 10px; padding: 4px 10px; border-radius: 999px;
+        font-size: 12px; font-weight: 700; color: #1a1408;
+        background: var(--x-gold);
+      }
+      .x-prod__body { display: flex; flex-direction: column; gap: 6px; padding: 12px 12px 14px; flex: 1; }
+      .x-prod h3 { margin: 0; font-size: 14px; font-weight: 700; line-height: 1.6; letter-spacing: 0; }
+      .x-weight { margin: 0; font-size: 13px; color: var(--x-gold-2); }
+      .x-weight--ask { color: var(--x-muted); }
+      .x-note { margin: 0; font-size: 12px; color: var(--x-muted); line-height: 1.7; }
+      .x-sizes { display: flex; flex-wrap: wrap; gap: 6px; margin: 2px 0; }
+      .x-size {
+        min-height: 44px; min-width: 44px; padding: 0 10px; border-radius: 999px; font-size: 12px; cursor: pointer;
+        background: var(--x-card); color: var(--x-text); border: 1px solid var(--x-line);
+      }
+      .x-size[aria-pressed="true"] { border-color: var(--x-gold); color: var(--x-gold-2); background: #2a2316; }
+      .x-add {
+        margin-top: auto; min-height: 44px; border-radius: 14px; font-size: 13px; font-weight: 700; cursor: pointer;
+        background: transparent; color: var(--x-gold-2); border: 1px solid var(--x-gold);
+        transition: background .2s, color .2s;
+      }
+      .x-add.is-added { background: var(--x-gold); color: #1a1408; }
+      .x-prod__body .x-spacer { flex: 1; }
+
+      /* trust */
+      .x-trust { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding-inline: 18px; }
+      .x-tile {
+        padding: 18px 16px; border-radius: 20px; background: linear-gradient(160deg, #1f1b14, var(--x-bg-2));
+        border: 1px solid var(--x-line);
+      }
+      .x-tile__ic { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 12px; color: var(--x-gold); border: 1px solid var(--x-line); }
+      .x-tile__ic svg { width: 20px; height: 20px; }
+      .x-tile p { margin: 0; font-size: 14px; line-height: 1.9; font-weight: 500; }
+
+      /* calculator */
+      .x-calc {
+        margin-inline: 18px; padding: 22px 18px; border-radius: 24px;
+        background: radial-gradient(120% 100% at 100% 0%, rgba(216,180,106,.16), transparent 60%), var(--x-card);
+        border: 1px solid var(--x-line);
+      }
+      .x-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      .x-field--wide { grid-column: 1 / -1; }
+      .x-field label { display: block; font-size: 13px; color: var(--x-muted); margin-bottom: 6px; }
+      .x-field input {
+        width: 100%; box-sizing: border-box; min-height: 50px; padding: 0 14px; border-radius: 14px;
+        background: var(--x-bg); color: var(--x-text); border: 1px solid var(--x-line);
+        font-size: 16px; font-family: var(--x-font); direction: rtl;
+      }
+      .x-field input:focus { outline: none; border-color: var(--x-gold); box-shadow: 0 0 0 3px rgba(216,180,106,.2); }
+      .x-result {
+        margin-top: 16px; padding: 16px; border-radius: 16px; display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+        background: var(--x-bg); border: 1px dashed var(--x-gold-deep);
+      }
+      .x-result span { font-size: 14px; color: var(--x-muted); }
+      .x-result output { font-size: 22px; font-weight: 800; }
+      .x-calc .x-note { margin-top: 10px; }
+
+      /* reels */
+      .x-reels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; padding-inline: 18px; }
+      .x-reel { position: relative; display: block; aspect-ratio: 9 / 16; border-radius: 18px; overflow: hidden; border: 1px solid var(--x-line); background: #000; }
+      .x-reel img { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .x-reel::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,.7)); }
+      .x-play {
+        position: absolute; z-index: 1; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center;
+        background: rgba(11,10,8,.55); border: 1px solid var(--x-gold-2); color: var(--x-gold-2);
+        backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      }
+      .x-play svg { width: 18px; height: 18px; margin-left: -3px; transform: scaleX(-1); }
+      .x-reel small { position: absolute; z-index: 1; bottom: 10px; right: 10px; left: 10px; font-size: 12px; color: #fff; }
+
+      /* visit */
+      .x-visit {
+        margin-inline: 18px; padding: 22px 18px; border-radius: 24px; background: var(--x-card); border: 1px solid var(--x-line);
+        display: grid; gap: 16px;
+      }
+      .x-visit address { font-style: normal; font-size: 15px; line-height: 2; }
+      .x-visit .x-btns .x-btn { flex: 1 1 160px; }
+
+      /* footer */
+      .x-foot { margin-top: 44px; padding: 24px 18px 10px; text-align: center; border-top: 1px solid var(--x-line); }
+      .x-foot img { width: 40px; height: 40px; border-radius: 50%; margin-bottom: 8px; }
+      .x-foot p { margin: 0; font-size: 12px; line-height: 2; color: var(--x-muted); }
+      .x-foot a { color: var(--x-gold) !important; display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; }
+
+      /* bottom bar */
+      .x-bar {
+        position: fixed; z-index: 30; bottom: 0; left: 0; right: 0;
+        display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+        padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+        background: rgba(11,10,8,.9); border-top: 1px solid var(--x-line);
+        backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+        font-family: var(--x-font);
+      }
+      .x-bar .x-btn { width: 100%; padding: 0 12px; font-family: var(--x-font); }
+
+      .x-toast {
+        position: fixed; z-index: 40; bottom: 90px; left: 50%; transform: translate(-50%, 20px);
+        padding: 10px 18px; border-radius: 999px; background: var(--x-gold); color: #1a1408;
+        font: 700 13px var(--x-font); opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s var(--ease-out);
+      }
+      .x-toast.is-on { opacity: 1; transform: translate(-50%, 0); }
+
+      @media (min-width: 760px) {
+        .x-wrap, .x-sec__head, .x-cats, .x-grid, .x-trust, .x-reels { padding-inline: 32px; }
+        .x-header { padding-inline: 32px; }
+        .x-hero, .x-calc, .x-visit { margin-inline: 32px; }
+        .x-hero { min-height: 560px; }
+        .x-hero__copy { padding: 48px; }
+        .x-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+        .x-trust { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        .x-cats { justify-content: center; flex-wrap: wrap; overflow: visible; }
+        .x-calc { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: end; }
+        .x-calc .x-result { margin-top: 0; }
+        .x-visit { grid-template-columns: 1.4fr 1fr; align-items: center; }
+        .x-reels { max-width: 720px; margin-inline: auto; }
+        .x-bar { left: 50%; right: auto; transform: translateX(-50%); bottom: 18px; width: 420px; border-radius: 999px; border: 1px solid var(--x-line); padding: 8px; }
+      }
+      @media (prefers-reduced-motion: reduce) { .x-btn, .x-toast, .x-add { transition: none; } }
+    </style>
+  </head>
+  <body>
+    <div class="page x-store" id="top">
+      <div class="x-strip" role="status">قیمت لحظه‌ای طلای ۱۸ عیار: به‌روزرسانی خودکار</div>
+
+      <header class="x-header">
+        <img class="x-logo" src="logo.jpg" alt="لوگوی طلافروشی ارسلان" />
+        <div class="x-brand">
+          <b class="x-gold-text">طلافروشی ارسلان</b>
+          <small>طلا کم اجرت | کرج</small>
+        </div>
+        <a class="x-icon" href="#products" aria-label="جستجو">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        </a>
+        <a class="x-icon" href="#products" aria-label="سبد خرید">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+          <span class="x-count" data-cart-count hidden>۰</span>
+        </a>
+      </header>
+
+      <main>
+        <section class="x-hero">
+          <img src="post3.jpg" alt="فضای داخلی مغازه طلافروشی ارسلان" />
+          <div class="x-hero__copy">
+            <p class="x-eyebrow">✦ جواهری ارسلان · کرج</p>
+            <h1>۲۰ سال اعتماد،<br /><span class="x-gold-text">حالا آنلاین</span></h1>
+            <p class="x-sub">وزن و اجرت هر محصول شفاف جلوی چشمته؛ آنلاین انتخاب کن، رزرو کن، تو مغازه تحویل بگیر یا درب منزل.</p>
+            <div class="x-btns">
+              <a class="x-btn x-btn--gold" href="#products">مشاهده محصولات</a>
+              <a class="x-btn x-btn--ghost" href="#visit">رزرو و تحویل حضوری</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="x-sec" id="cats" aria-label="دسته‌بندی‌ها">
+          <div class="x-sec__head"><div><span class="x-orn"></span><h2>دسته‌بندی‌ها</h2></div></div>
+          <div class="x-cats">
+            <a class="x-cat" href="#products"><div class="x-cat__ring"><img src="hl_1.jpg" alt="" /></div><span>ست و نیم ست</span></a>
+            <a class="x-cat" href="#products"><div class="x-cat__ring"><img src="hl_2.jpg" alt="" /></div><span>گردنی و زنجیر</span></a>
+            <a class="x-cat" href="#products"><div class="x-cat__ring"><img src="hl_3.jpg" alt="" /></div><span>النگو</span></a>
+            <a class="x-cat" href="#products"><div class="x-cat__ring"><img src="hl_4.jpg" alt="" /></div><span>دستبند</span></a>
+            <a class="x-cat" href="#products"><div class="x-cat__ring"><img src="hl_5.jpg" alt="" /></div><span>بدون اجرت</span></a>
+            <a class="x-cat" href="#products"><div class="x-cat__ring"><img src="hl_6.jpg" alt="" /></div><span>هرینگبون</span></a>
+            <a class="x-cat" href="#products"><div class="x-cat__ring"><img src="hl_7.jpg" alt="" /></div><span>مردانه</span></a>
+            <a class="x-cat" href="#products"><div class="x-cat__ring"><img src="hl_8.jpg" alt="" /></div><span>گوشواره</span></a>
+            <a class="x-cat" href="#products"><div class="x-cat__ring"><img src="hl_10.jpg" alt="" /></div><span>صندوق طلا</span></a>
+          </div>
+        </section>
+
+        <section class="x-sec" id="products">
+          <div class="x-sec__head">
+            <div><span class="x-orn"></span><h2>مینیمال‌های پرطرفدار</h2><p>وزن هر محصول شفاف، قیمت با نرخ روز</p></div>
+            <a href="#cats">همه ←</a>
+          </div>
+          <div class="x-grid">
+            <article class="x-prod">
+              <div class="x-prod__media"><img src="post1.jpg" alt="گوشواره حلقه‌ای ویانا" /></div>
+              <div class="x-prod__body">
+                <h3>گوشواره حلقه‌ای ویانا</h3>
+                <p class="x-weight">وزن: <b data-weight>۳٫۹۰۰</b> گرم</p>
+                <div class="x-sizes" role="group" aria-label="وزن‌های موجود">
+                  <button class="x-size" type="button" aria-pressed="true" data-w="۳٫۹۰۰">۳٫۹۰۰ گ</button>
+                  <button class="x-size" type="button" aria-pressed="false" data-w="۲٫۸۸۰">۲٫۸۸۰ گ</button>
+                  <button class="x-size" type="button" aria-pressed="false" data-w="۱٫۸۶۰">۱٫۸۶۰ گ</button>
+                </div>
+                <p class="x-note">قیمت با نرخ امروز محاسبه می‌شه</p>
+                <button class="x-add" type="button">افزودن به سبد</button>
+              </div>
+            </article>
+            <article class="x-prod">
+              <div class="x-prod__media"><img src="post2.jpg" alt="سرویس طلای تراش" /><span class="x-badge">ست کامل</span></div>
+              <div class="x-prod__body">
+                <h3>سرویس تراش</h3>
+                <p class="x-weight">وزن: <b>۱۲٫۰۰</b> گرم</p>
+                <p class="x-note">قیمت با نرخ امروز محاسبه می‌شه</p>
+                <button class="x-add" type="button">افزودن به سبد</button>
+              </div>
+            </article>
+            <article class="x-prod">
+              <div class="x-prod__media"><img src="post5.jpg" alt="گردنبند آویز مینیمال روی گردن مدل" loading="lazy" /></div>
+              <div class="x-prod__body">
+                <h3>گردنبند آویز مینیمال</h3>
+                <p class="x-weight x-weight--ask">وزن: استعلام در دایرکت</p>
+                <p class="x-note">قیمت با نرخ امروز محاسبه می‌شه</p>
+                <button class="x-add" type="button">افزودن به سبد</button>
+              </div>
+            </article>
+            <article class="x-prod">
+              <div class="x-prod__media"><img src="post10.jpg" alt="آویز فروهر در دست" loading="lazy" /></div>
+              <div class="x-prod__body">
+                <h3>آویز فروهر</h3>
+                <p class="x-weight x-weight--ask">وزن: استعلام در دایرکت</p>
+                <p class="x-note">قیمت با نرخ امروز محاسبه می‌شه</p>
+                <button class="x-add" type="button">افزودن به سبد</button>
+              </div>
+            </article>
+            <article class="x-prod">
+              <div class="x-prod__media"><img src="post4.jpg" alt="گوشواره و زنجیر کارتیه روی نیم‌تنه ویترین" loading="lazy" /></div>
+              <div class="x-prod__body">
+                <h3>گوشواره و زنجیر کارتیه</h3>
+                <p class="x-weight x-weight--ask">وزن: استعلام در دایرکت</p>
+                <p class="x-note">قیمت با نرخ امروز محاسبه می‌شه</p>
+                <button class="x-add" type="button">افزودن به سبد</button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="x-sec" id="why">
+          <div class="x-sec__head"><div><span class="x-orn"></span><h2>چرا ارسلان؟</h2></div></div>
+          <div class="x-trust">
+            <div class="x-tile">
+              <div class="x-tile__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg></div>
+              <p>۲۰ سال سابقه درخشان در خرید و فروش طلا</p>
+            </div>
+            <div class="x-tile">
+              <div class="x-tile__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M19 5L5 19"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/></svg></div>
+              <p>اجرت کم و کالکشن‌های بدون اجرت</p>
+            </div>
+            <div class="x-tile">
+              <div class="x-tile__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h7M9 16h5"/></svg></div>
+              <p>فاکتور معتبر با وزن و عیار</p>
+            </div>
+            <div class="x-tile">
+              <div class="x-tile__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l8-6 8 6v10H4z"/><path d="M10 20v-5h4v5"/></svg></div>
+              <p>رزرو آنلاین، تحویل حضوری در مغازه</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="x-sec" id="calc">
+          <div class="x-sec__head"><div><span class="x-orn"></span><h2>ماشین‌حساب قیمت</h2><p>قبل از خرید، قیمت نهایی رو خودت حساب کن</p></div></div>
+          <div class="x-calc">
+            <div class="x-fields">
+              <div class="x-field x-field--wide">
+                <label for="x-rate">نرخ هر گرم طلای ۱۸ عیار (تومان)</label>
+                <input id="x-rate" inputmode="numeric" placeholder="نرخ امروز را وارد کنید" autocomplete="off" />
+              </div>
+              <div class="x-field">
+                <label for="x-w">وزن (گرم)</label>
+                <input id="x-w" inputmode="decimal" placeholder="مثلاً ۳٫۹" autocomplete="off" />
+              </div>
+              <div class="x-field">
+                <label for="x-p">اجرت ٪</label>
+                <input id="x-p" inputmode="decimal" placeholder="مثلاً ۷" autocomplete="off" />
+              </div>
+            </div>
+            <div>
+              <div class="x-result">
+                <span>قیمت نهایی با نرخ امروز</span>
+                <output id="x-out" for="x-rate x-w x-p" class="x-gold-text">—</output>
+              </div>
+              <p class="x-note">نمونه نمایشی: در نسخه نهایی، نرخ روز خودکار وارد می‌شه.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="x-sec" id="reels">
+          <div class="x-sec__head">
+            <div><span class="x-orn"></span><h2>از ویترین ما</h2></div>
+            <a href="https://www.instagram.com/javaheriarsalangold/" target="_blank" rel="noopener">اینستاگرام ←</a>
+          </div>
+          <div class="x-reels">
+            <a class="x-reel" href="https://www.instagram.com/javaheriarsalangold/" target="_blank" rel="noopener" aria-label="پخش ویدیوی ویترین ۱">
+              <img src="post6.jpg" alt="" loading="lazy" />
+              <span class="x-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span>
+            </a>
+            <a class="x-reel" href="https://www.instagram.com/javaheriarsalangold/" target="_blank" rel="noopener" aria-label="پخش ویدیوی ویترین ۲">
+              <img src="post8.jpg" alt="" loading="lazy" />
+              <span class="x-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span>
+            </a>
+            <a class="x-reel" href="https://www.instagram.com/javaheriarsalangold/" target="_blank" rel="noopener" aria-label="پخش ویدیوی ویترین ۳">
+              <img src="post11.jpg" alt="" loading="lazy" />
+              <span class="x-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span>
+            </a>
+          </div>
+        </section>
+
+        <section class="x-sec" id="visit">
+          <div class="x-sec__head"><div><span class="x-orn"></span><h2>حضوری سر بزنید</h2></div></div>
+          <div class="x-visit">
+            <address>کرج، حصارک، خیابان المهدی، نبش کوچه کیان، پاساژ بهروز، <span class="x-gold-text">جواهری ارسلان</span></address>
+            <div class="x-btns">
+              <a class="x-btn x-btn--gold" href="https://www.google.com/maps/search/?api=1&amp;query=%D8%AD%D8%B5%D8%A7%D8%B1%DA%A9%20%DA%A9%D8%B1%D8%AC%20%D9%BE%D8%A7%D8%B3%D8%A7%DA%98%20%D8%A8%D9%87%D8%B1%D9%88%D8%B2" target="_blank" rel="noopener">مسیریابی</a>
+              <a class="x-btn x-btn--ghost" href="https://www.instagram.com/javaheriarsalangold/" target="_blank" rel="noopener">اینستاگرام</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="x-foot">
+        <img src="logo.jpg" alt="" />
+        <p>طرح نمونه اختصاصی برای طلافروشی ارسلان، طراحی: ابراهیم بخشی، <a href="https://webrahim.ir" target="_blank" rel="noopener">webrahim.ir</a></p>
+      </footer>
+    </div>
+
+    <nav class="x-bar" aria-label="دسترسی سریع">
+      <a class="x-btn x-btn--gold" href="https://www.instagram.com/javaheriarsalangold/" target="_blank" rel="noopener">سفارش در دایرکت</a>
+      <a class="x-btn x-btn--ghost" href="#products">سبد خرید <span data-cart-label></span></a>
+    </nav>
+    <div class="x-toast" id="x-toast" aria-live="polite"></div>
+
+    <script src="hark.js"></script>
+    <script>
+      (function () {
+        var fa = function (n) { return Number(n).toLocaleString("fa-IR"); };
+        var toLatin = function (s) {
+          return String(s || "")
+            .replace(/[۰-۹]/g, function (d) { return "۰۱۲۳۴۵۶۷۸۹".indexOf(d); })
+            .replace(/[٠-٩]/g, function (d) { return "٠١٢٣٤٥٦٧٨٩".indexOf(d); })
+            .replace(/[٫،/]/g, ".").replace(/[,٬\s]/g, "");
+        };
+
+        // size chips
+        document.querySelectorAll(".x-sizes").forEach(function (g) {
+          g.addEventListener("click", function (e) {
+            var b = e.target.closest(".x-size"); if (!b) return;
+            g.querySelectorAll(".x-size").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+            var w = g.closest(".x-prod").querySelector("[data-weight]");
+            if (w) w.textContent = b.dataset.w;
+          });
+        });
+
+        // cart
+        var count = 0, toast = document.getElementById("x-toast"), t;
+        var badge = document.querySelector("[data-cart-count]"), label = document.querySelector("[data-cart-label]");
+        document.querySelectorAll(".x-add").forEach(function (b) {
+          b.addEventListener("click", function () {
+            count++;
+            badge.hidden = false; badge.textContent = fa(count);
+            label.textContent = "(" + fa(count) + ")";
+            b.classList.add("is-added"); b.textContent = "✓ به سبد اضافه شد";
+            toast.textContent = b.closest(".x-prod").querySelector("h3").textContent + " به سبد اضافه شد";
+            toast.classList.add("is-on"); clearTimeout(t);
+            t = setTimeout(function () { toast.classList.remove("is-on"); }, 2000);
+          });
+        });
+
+        // calculator: rate × weight × (1 + wage%)
+        var rate = document.getElementById("x-rate"), w = document.getElementById("x-w"), p = document.getElementById("x-p"), out = document.getElementById("x-out");
+        function calc() {
+          var r = parseFloat(toLatin(rate.value)), g = parseFloat(toLatin(w.value)), pc = parseFloat(toLatin(p.value)) || 0;
+          if (!r || !g) { out.textContent = "—"; return; }
+          out.textContent = fa(Math.round(r * g * (1 + pc / 100))) + " تومان";
+        }
+        rate.addEventListener("input", function () {
+          var n = toLatin(rate.value).replace(/\D/g, "");
+          rate.value = n ? fa(n) : ""; calc();
+        });
+        [w, p].forEach(function (el) { el.addEventListener("input", calc); });
+      })();
+    </script>
+  </body>
+</html>
